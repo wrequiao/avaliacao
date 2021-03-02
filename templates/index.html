@@ -1,0 +1,97 @@
+{{define "Index"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <title>Arquivos disponíveis</title>
+    <style>
+        #pageloader
+        {
+          background: rgba( 255, 255, 255, 0.8 );
+          display: none;
+          height: 100%;
+          position: fixed;
+          width: 100%;
+          z-index: 9999;
+        }
+  
+        #pageloader img
+        {
+          left: 50%;
+          margin-left: -32px;
+          margin-top: -32px;
+          position: absolute;
+          top: 50%;
+        }
+        </style>
+</head>
+<nav class="navbar navbar-light bg-light mb-4">
+    <a class="navbar-brand" href="/">Arquivos disponíveis</a>
+</nav>
+
+<body>
+    <div id="pageloader">
+        <img src="https://loja.clanel.com.br/portal/images/load.gif" alt="processing..." />
+     </div>
+    <div class="container">
+       
+        <section class="card">
+            <div>
+                <a href="/uploadfile">Selecionar Arquivo</a>
+                <table class="table table-striped table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{range .}}
+                        <tr>
+                            <td>{{.Id}}</td>
+                            <td>{{.Nome}}</td>
+                            <td><button onclick="onProcessar('{{.Id}}')" class="btn btn-outline-primary waves-effect">Processar</button></td>
+                            <td><button onclick="onDelete('{{.Id}}')" class="btn btn-outline-danger waves-effect">Deletar</button></td>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+
+    function onDelete(id){
+        let resposta = confirm("Deseja realmente deletar o arquivo?")
+        if (resposta){
+            $("#pageloader").fadeIn();
+            window.location = "/delete?id=" + id
+        }
+    }
+
+    function onProcessar(id){
+        let resposta = confirm("Deseja realmente processar o arquivo?")
+        if (resposta){
+            $("#pageloader").fadeIn();
+            window.location = "/processar?id=" + id
+        }
+    }
+
+</script>
+
+</body>
+
+
+</html>
+{{end}}
