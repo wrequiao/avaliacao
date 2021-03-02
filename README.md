@@ -5,7 +5,7 @@ Projeto de avaliacao sobre a linguagem GO.
 
 ## Softwares necessários
 
- * GO <= 1.15.8
+ * GO = 1.15.8
  * PostGres 
 
 
