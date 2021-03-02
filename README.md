@@ -16,7 +16,8 @@ Clone este repositório para um servidor web.
 https://github.com/wrequiao/avaliacao.git
 
 Configure no arquivo config/dev_config.json os dados para conectar no banco de dados.
-rodar os comandos dentro do diretório do projeto
+
+Rodar os comandos dentro do diretório do projeto
 - go get github.com/lib/pq
 - go get github.com/tkanos/gonfig
 
