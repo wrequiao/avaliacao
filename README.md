@@ -57,6 +57,8 @@ CREATE TABLE dados
      FOREIGN KEY (idarquivo) REFERENCES arquivo (id)
   ); 
 
+O projeto esta configurado para rodar na porta 8080
+http://localhost:8080
 
 ## Fluxo de funcionamento
 
